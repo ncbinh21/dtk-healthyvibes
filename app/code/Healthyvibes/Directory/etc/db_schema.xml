@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="healthyvibes_directory_region_city" resource="default" engine="innodb" comment="Directory Region City">
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="City ID"/>
+        <column xsi:type="int" name="region_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Region ID"/>
+        <column xsi:type="varchar" name="code" nullable="true" length="32" comment="City Post code"/>
+        <column xsi:type="varchar" name="pos_code" nullable="true" length="32" comment="POS integration code"/>
+        <column xsi:type="varchar" name="ghn_code" nullable="true" length="32" comment="GHN integration City code"/>
+        <column xsi:type="varchar" name="default_name" nullable="true" length="255" comment="Default City Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="city_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HEALTHYVIBES_DIR_REGION_CITY_REGION_ID_DIR_COUNTRY_REGION_REGION_ID"
+                    table="healthyvibes_directory_region_city" column="region_id" referenceTable="directory_country_region"
+                    referenceColumn="region_id" onDelete="CASCADE"/>
+        <index referenceId="HEALTHYVIBES_DIRECTORY_REGION_CITY_REGION_ID" indexType="btree">
+            <column name="region_id"/>
+        </index>
+    </table>
+
+    <table name="healthyvibes_directory_region_ward" resource="default" engine="innodb" comment="Directory Region Ward">
+        <column xsi:type="int" name="ward_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Ward ID"/>
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="City ID"/>
+        <column xsi:type="varchar" name="code" nullable="true" length="32" comment="GHN integration Ward code"/>
+        <column xsi:type="varchar" name="default_name" nullable="true" length="255" comment="Default Ward Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ward_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HEALTHYVIBES_DIR_REGION_WARD_CITY_ID_HEALTHYVIBES_DIR_REGION_CITY_CITY_ID"
+                    table="healthyvibes_directory_region_ward" column="city_id" referenceTable="healthyvibes_directory_region_city"
+                    referenceColumn="city_id" onDelete="CASCADE"/>
+        <index referenceId="HEALTHYVIBES_DIRECTORY_REGION_WARD_CITY_ID" indexType="btree">
+            <column name="city_id"/>
+        </index>
+    </table>
+
+    <table name="sales_order_address" resource="sales" comment="Sales Flat Order Address">
+        <column xsi:type="int" name="city_id" unsigned="true" nullable="true" identity="false" comment="City Id"/>
+        <column xsi:type="int" name="ward_id" unsigned="true" nullable="true" identity="false" comment="Ward Id"/>
+        <column xsi:type="varchar" name="ward" nullable="true" length="255" comment="Ward Name"/>
+    </table>
+    <table name="quote_address" resource="checkout" comment="Sales Flat Quote Address">
+        <column xsi:type="int" name="city_id" unsigned="true" nullable="true" identity="false" comment="City Id"/>
+        <column xsi:type="int" name="ward_id" unsigned="true" nullable="true" identity="false" comment="Ward Id"/>
+        <column xsi:type="varchar" name="ward" nullable="true" length="255" comment="Ward Name"/>
+    </table>
+    <table name="customer_address_entity" resource="default" comment="Customer Address Entity">
+        <column xsi:type="varchar" name="city_id" length="10" nullable="true" comment="City Id"/>
+        <column xsi:type="varchar" name="ward_id" length="10" nullable="true" comment="Ward Id"/>
+    </table>
+
+    <table name="healthyvibes_directory_region_domain" resource="default" engine="innodb" comment="Directory Region Domain">
+        <column xsi:type="int" name="domain_id" unsigned="true" nullable="false" identity="true" comment="Domain Id"/>
+        <column xsi:type="varchar" name="code" length="255" nullable="false" comment="Domain Code"/>
+        <column xsi:type="varchar" name="default_name" length="255" nullable="true" comment="Domain Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="domain_id"/>
+        </constraint>
+    </table>
+    <table name="directory_country_region">
+        <column xsi:type="int" name="domain_id" unsigned="true" nullable="true" identity="false" comment="Domain Id"/>
+        <constraint xsi:type="foreign" referenceId="HEALTHYVIBES_REGION_DOMAIN_ID_HEALTHYVIBES_DIR_REGION_DOMAIN_ID"
+                    table="directory_country_region" column="domain_id" referenceTable="healthyvibes_directory_region_domain"
+                    referenceColumn="domain_id" onDelete="SET NULL"/>
+    </table>
+</schema>
+
+

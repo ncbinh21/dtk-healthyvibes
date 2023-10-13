@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Framework\Locale\FormatInterface">
+        <plugin name="healthyvibes_directory_fix_number_with_comma" type="Healthyvibes\Directory\Plugin\Locale\FormatPlugin"/>
+    </type>
+
+    <type name="Magento\Directory\Model\ResourceModel\Region\Collection">
+        <plugin name="healthyvibes_directory_custom_region_order"
+                type="Healthyvibes\Directory\Plugin\RegionCollectionPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Directory\Model\Currency">
+        <plugin name="healthyvibes_remove_precise_digits_from_price" type="Healthyvibes\Directory\Plugin\Model\Currency"/>
+    </type>
+    <type name="Magento\Eav\Model\Config">
+        <arguments>
+            <argument name="attributesForPreload" xsi:type="array">
+                <item name="customer_address" xsi:type="array">
+                    <item name="city_id" xsi:type="string">customer_address</item>
+                    <item name="ward_id" xsi:type="string">customer_address</item>
+                    <item name="ward" xsi:type="string">customer_address</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="healthyvibes_add_directory_to_shipping_address" type="Healthyvibes\Directory\Plugin\Checkout\Model\ShippingInformationManagementPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="healthyvibes_add_directory_to_billing_address" type="Healthyvibes\Directory\Plugin\Quote\Model\QuotePlugin"/>
+    </type>
+    <!--workaround for field copy not working-->
+    <type name="Magento\Quote\Model\Quote\Address\ToOrderAddress">
+        <plugin name="healthyvibes_directory_copy_address_field"
+                type="Healthyvibes\Directory\Plugin\Quote\CopyAddressFieldPlugin" sortOrder="20"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="healthyvibes_directory_copy_quote_address_to_address"
+                type="Healthyvibes\Directory\Plugin\Quote\CopyQuoteAddressToAddressPlugin" sortOrder="20"/>
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm">
+        <plugin name="healthyvibes_directory_set_form_address"
+                type="Healthyvibes\Directory\Plugin\Block\Adminhtml\Order\Create\Form\AbstractFormPlugin" sortOrder="20"/>
+    </type>
+</config>
