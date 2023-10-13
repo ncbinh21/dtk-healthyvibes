@@ -59,6 +59,10 @@ define([
             if (!value) {
                 $('select[name=ward_id]').html(`<option>${$t("Please select a ward.")}</option>`);
                 return;
+            } else {
+                if (typeof $('select[name=region_id]').find('option:selected')[0] !== 'undefined') {
+                    $("div[name='shippingAddress.region'] input[name='region']").val($('select[name=region_id]').find('option:selected')[0].innerHTML);
+                }
             }
 
             //$('select[name=ward_id]').find('option:not([value])').remove();
