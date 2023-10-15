@@ -69,7 +69,7 @@ class CreateCityIdAttribute implements DataPatchInterface
             'label' => 'City/District',
             'input' => 'hidden',
             'source' => City::class,
-            'required' => false,
+            'required' => true,
             'sort_order' => 103,
             'position' => 103,
             'is_used_in_grid' => false,
