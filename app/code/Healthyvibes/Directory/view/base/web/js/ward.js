@@ -40,7 +40,7 @@ define([
         },
 
         onUpdate: function (value) {
-            this._super();
+            //this._super(); remove because required when load page
 
             if ( this.indexedOptions[value] && this.indexedOptions[value] !== '0000') {
                 this.wardValue = this.indexedOptions[value]['title'];
