@@ -1,0 +1,21 @@
+"Please select a city or district.","Please select a city or district."
+"* Required Fields","* Required Fields"
+"Contact Information","Contact Information"
+Company,Company
+"Phone Number","Phone Number"
+Fax,Fax
+Address,Address
+"Street Address","Street Address"
+"Street Address %1","Street Address %1"
+"Please select a city or district.","Please select a city or district."
+"Please select a region, state or province.","Please select a region, state or province."
+"This is your default billing address.","This is your default billing address."
+"Use as my default billing address","Use as my default billing address"
+"This is your default shipping address.","This is your default shipping address."
+"Use as my default shipping address","Use as my default shipping address"
+"Save Address","Save Address"
+"Go back","Go back"
+City/District,City/District
+"Can't check requested quantity for products without Source Items support.","This item is no longer available, please remove from cart"
+"Some item options or their combination are not currently available.","This item is no longer available, please update your cart and retry checkout process."
+"Shipping & Handling","Shipping Fee"
