@@ -8,6 +8,8 @@ $enable = $helper->isEnable();
 $appId = $helper->getFBAppId();
 $pageId = $helper->getFBPageId();
 $color =  $helper->getFBColor();
+$greetingDialogDisplay =  $helper->getFBGreetingDialogDisplay();
+$greetingDialogDelay =  $helper->getFBGreetingDialogDelay();
 
 // @codingStandardsIgnoreLine
 $color = str_replace('#', '', $color);
@@ -64,7 +66,9 @@ if ($enable) {
          page_id="<?php echo $pageId;?>"
          theme_color="<?php echo $color;?>"
          logged_in_greeting="<?php echo $loginText;?>"
-         logged_out_greeting="<?php echo $logoutText;?>">
+         logged_out_greeting="<?php echo $logoutText;?>"
+         greeting_dialog_display="<?php echo $greetingDialogDisplay;?>"
+         greeting_dialog_delay="<?php echo $greetingDialogDelay;?>">
     </div>
     <?php
 }
