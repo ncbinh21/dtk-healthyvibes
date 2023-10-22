@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Healthyvibes_Banner::elements" title="Healthyvibes Banners" module="Healthyvibes_Banner" resource="Healthyvibes_Banner::banner" parent="Healthyvibes_Core::extensions"  sortOrder="10"/>
+        <add id="Healthyvibes_Banner::banner" title="Manage Banners" module="Healthyvibes_Banner" resource="Healthyvibes_Banner::manage_banners" parent="Healthyvibes_Banner::elements" sortOrder="10" action="banner/banner/" />
+        <add id="Healthyvibes_Banner::configuration" title="Configuration" module="Healthyvibes_Banner" resource="Healthyvibes_Banner::config_banner" parent="Healthyvibes_Banner::elements" sortOrder="20" action="admin/system_config/edit/section/healthyvibes_banner/"/>
+    </menu>
+</config>
