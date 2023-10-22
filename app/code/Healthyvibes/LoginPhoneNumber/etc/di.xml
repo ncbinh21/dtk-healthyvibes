@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- API Preferences -->
+    <preference for="Healthyvibes\LoginPhoneNumber\Api\SigninInterface" type="Healthyvibes\LoginPhoneNumber\Model\Handler\Signin"/>
+    <!-- Overrides -->
+    <preference for="Magento\Customer\Api\AccountManagementInterface" type="Healthyvibes\LoginPhoneNumber\Model\AccountManagement" />
+    <preference for="Magento\Customer\Block\Form\Login" type="Healthyvibes\LoginPhoneNumber\Block\Form\Login"/>
+
+    <type name="Magento\Customer\Model\ResourceModel\Customer">
+        <plugin name="healthyvibes_validate_unique_phonenumber" type="Healthyvibes\LoginPhoneNumber\Plugin\Model\ResourceModel\Customer\ValidateUniquePhonenumber" sortOrder="10" disabled="false"  />
+    </type>
+</config>
