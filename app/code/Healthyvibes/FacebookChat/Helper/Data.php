@@ -13,6 +13,8 @@ class Data extends AbstractHelper
     const XML_FB_COLOR = 'messenger/general/color_option';
     const XML_FB_LOGIN_TEXT = 'messenger/general/login_message';
     const XML_FB_LOGOUT_TEXT = 'messenger/general/logout_message';
+    const XML_FB_GREETING_DIALOG_DISPLAY = 'messenger/general/greeting_dialog_display';
+    const XML_FB_GREETING_DIALOG_DELAY = 'messenger/general/greeting_dialog_delay';
 
     public function isEnable($storeId = null)
     {
@@ -59,6 +61,24 @@ class Data extends AbstractHelper
     {
         return $this->scopeConfig->getValue(
             self::XML_FB_LOGOUT_TEXT,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
+
+    public function getFBGreetingDialogDisplay($storeId = null)
+    {
+        return $this->scopeConfig->getValue(
+            self::XML_FB_GREETING_DIALOG_DISPLAY,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
+
+    public function getFBGreetingDialogDelay($storeId = null)
+    {
+        return $this->scopeConfig->getValue(
+            self::XML_FB_GREETING_DIALOG_DELAY,
             ScopeInterface::SCOPE_STORE,
             $storeId
         );

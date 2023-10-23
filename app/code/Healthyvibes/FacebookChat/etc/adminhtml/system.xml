@@ -50,6 +50,20 @@
                         <field id="enable">1</field>
                     </depends>
                 </field>
+                <field id="greeting_dialog_display" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Greeting Dialog Display</label>
+                    <comment><![CDATA[Option: show, fade, hide, icon]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="greeting_dialog_delay" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Greeting Dialog Delay</label>
+                    <comment><![CDATA[Number second to show chat box]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>
