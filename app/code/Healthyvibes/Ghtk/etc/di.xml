@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="ghtk_Query" xsi:type="object">Healthyvibes\Ghtk\Console\QueryAPI</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="healthyvibes_ghtk_plugin_magento_checkout_model_shippinginformationmanagement" type="Healthyvibes\Ghtk\Plugin\Magento\Checkout\Model\ShippingInformationManagement" sortOrder="10"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="healthyvibes_ghtk_plugin_magento_quote_model_quote_address" type="Healthyvibes\Ghtk\Plugin\Magento\Quote\Model\Quote\Address" sortOrder="10"/>
+    </type>
+</config>
