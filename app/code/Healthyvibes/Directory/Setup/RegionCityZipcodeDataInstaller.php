@@ -2,10 +2,10 @@
 
 namespace Healthyvibes\Directory\Setup;
 
+use Healthyvibes\Directory\Model\ResourceModel\City\CollectionFactory;
 use Magento\Directory\Helper\Data;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Healthyvibes\Directory\Model\ResourceModel\City\CollectionFactory;
 
 class RegionCityZipcodeDataInstaller
 {
@@ -98,15 +98,20 @@ class RegionCityZipcodeDataInstaller
      * @param array $data
      * @return void
      */
-    public function updateCityCode(AdapterInterface $adapter, array $data) {
-        $adapter->delete($this->resourceConnection->getTableName('healthyvibes_directory_region_city'),
+    public function updateCityCode(AdapterInterface $adapter, array $data)
+    {
+        $adapter->delete(
+            $this->resourceConnection->getTableName('healthyvibes_directory_region_city'),
             [
                 'pos_code = ?' => 'VN-017'
-            ]);
-        $adapter->delete($this->resourceConnection->getTableName('healthyvibes_directory_region_city'),
+            ]
+        );
+        $adapter->delete(
+            $this->resourceConnection->getTableName('healthyvibes_directory_region_city'),
             [
                 'pos_code = ?' => 'VN-642'
-            ]);
+            ]
+        );
         $bind = ['region_id' => 2499, 'code' => 81000, 'default_name' => 'Thành phố Hồng Ngự', 'pos_code' => 'VN-715'];
         $adapter->insert($this->resourceConnection->getTableName('healthyvibes_directory_region_city'), $bind);
         $needUpdateNames = [
@@ -137,7 +142,7 @@ class RegionCityZipcodeDataInstaller
                     'ghn_code' => $row[0]
                 ],
                 [
-                    'default_name like "'.$row[1].'"',
+                    'default_name like "' . $row[1] . '"',
                     'code = ?' => $row[2]
                 ]
             );
@@ -161,7 +166,8 @@ class RegionCityZipcodeDataInstaller
      * @param $cityCode
      * @return int
      */
-    private function getCityId($cityCode) {
+    private function getCityId($cityCode)
+    {
         $cityId = 0;
         /** @var $collection \Healthyvibes\Directory\Model\ResourceModel\City\Collection */
         $collection = $this->cityCollectionFactory->create();
@@ -172,4 +178,3 @@ class RegionCityZipcodeDataInstaller
         return $cityId;
     }
 }
-

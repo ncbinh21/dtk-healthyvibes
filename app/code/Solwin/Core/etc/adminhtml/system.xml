@@ -11,7 +11,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
     <system>
-        <tab id="solwin_extension_tab" translate="label" sortOrder="100" class="solwin_solwin_logo">
+        <tab id="solwin_extension_tab" translate="label" sortOrder="900" class="solwin_solwin_logo">
             <label>Solwin</label>
         </tab>
     </system>
