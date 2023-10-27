@@ -26,9 +26,6 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Checkout\Model\TotalsInformationManagement">
-        <plugin name="CalculateBefore" type="Healthyvibes\GiaoHangNhanh\Plugin\Checkout\Model\TotalsInformationManagement" sortOrder="22"/>
-    </type>
     <type name="Magento\Shipping\Model\Shipping">
         <plugin name="CollectRatesBefore" type="Healthyvibes\GiaoHangNhanh\Plugin\Shipping\Model\Shipping" sortOrder="22" />
     </type>
