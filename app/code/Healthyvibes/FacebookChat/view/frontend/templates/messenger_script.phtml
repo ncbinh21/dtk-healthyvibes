@@ -55,7 +55,7 @@ if ($enable) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "<?php echo $this->getJsUrl('customerchat.js');?>";
+            js.src = "<?= $helper->getJsUrl();?>";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>

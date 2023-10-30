@@ -16,6 +16,27 @@ class Data extends AbstractHelper
     const XML_FB_GREETING_DIALOG_DISPLAY = 'messenger/general/greeting_dialog_display';
     const XML_FB_GREETING_DIALOG_DELAY = 'messenger/general/greeting_dialog_delay';
 
+    /**
+     * Asset service
+     *
+     * @var \Magento\Framework\View\Asset\Repository
+     */
+
+    protected $_assetRepo;
+
+    public function __construct(
+        \Magento\Framework\App\FrontController $context,
+        \Magento\Framework\View\Asset\Repository $assetRepo
+    ) {
+        $this->_assetRepo = $assetRepo;
+        parent::__construct($context);
+    }
+
+    public function getJsUrl() : string
+    {
+        return $this->_assetRepo->getUrl("Healthyvibes_FacebookChat::js/customerchat.js");
+    }
+
     public function isEnable($storeId = null)
     {
         return $this->scopeConfig->getValue(
