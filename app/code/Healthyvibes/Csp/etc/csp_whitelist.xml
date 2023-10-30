@@ -5,7 +5,7 @@
     	<policy id="script-src">
             <values>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
-                <value id="cloudflare-insights" type="host">*..cloudflareinsights.com</value>
+                <value id="cloudflare-insights" type="host">*.cloudflareinsights.com</value>
                 <value id="twitter.com" type="host">*.twitter.com</value>
                 <value id="google-analytics" type="host">*.google-analytics.com</value>
                 <value id="twimg" type="host">*.twimg.com</value>
