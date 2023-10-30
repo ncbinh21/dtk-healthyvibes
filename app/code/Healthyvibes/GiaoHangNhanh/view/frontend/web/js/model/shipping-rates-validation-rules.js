@@ -11,7 +11,10 @@ define([
             let rules = {};
             if (!customer.isLoggedIn()) {
                 rules = {
-                    'district': {
+                    'city_id': {
+                        'required': true
+                    },
+                    'ward_id': {
                         'required': true
                     }
                 };
