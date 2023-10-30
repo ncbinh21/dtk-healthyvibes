@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
-<policies>
-    <policy id="script-src">
+	<policies>
+    	<policy id="script-src">
             <values>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="cloudflare-insights" type="host">*..cloudflareinsights.com</value>
@@ -76,5 +76,4 @@
             </values>
         </policy>
     </policies>
-</policies>
 </csp_whitelist>
