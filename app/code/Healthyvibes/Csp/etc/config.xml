@@ -6,6 +6,7 @@
             <mode>
                 <storefront>
                     <report_only>1</report_only>
+                    <report_uri>https://static.cloudflareinsights.com/</report_uri>
                 </storefront>
                 <admin>
                     <report_only>1</report_only>
