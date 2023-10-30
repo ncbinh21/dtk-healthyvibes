@@ -25,7 +25,7 @@ class Data extends AbstractHelper
     protected $_assetRepo;
 
     public function __construct(
-        \Magento\Framework\App\FrontController $context,
+        \Magento\Framework\App\Helper\Context $context,
         \Magento\Framework\View\Asset\Repository $assetRepo
     ) {
         $this->_assetRepo = $assetRepo;
