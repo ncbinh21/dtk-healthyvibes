@@ -34,6 +34,9 @@ define(
                 }
 
                 var district = $('[name="custom_attributes[district]"]').val();
+                var ward = $('[name="custom_attributes[ward]"]').val();
+                var ward_id = $('[name="custom_attributes[ward_id]"]').val();
+                var city_id = $('[name="custom_attributes[city_id]"]').val();
 
                 payload = {
                     addressInformation: {
@@ -42,8 +45,10 @@ define(
                         shipping_method_code: quote.shippingMethod().method_code,
                         shipping_carrier_code: quote.shippingMethod().carrier_code,
                         extension_attributes:{
-                            district: district
-
+                            district: district,
+                            ward: ward,
+                            ward_id: ward_id,
+                            city_id: city_id
                         }
                     }
                 };

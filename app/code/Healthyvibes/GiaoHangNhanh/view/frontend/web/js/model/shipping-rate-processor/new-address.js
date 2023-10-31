@@ -15,7 +15,7 @@ define([
          */
         getRates: function (address) {
             var cache, serviceUrl, payload;
-            var district = '';
+            var district = '', ward = '', ward_id = '', city_id = '';
 
             shippingService.isLoading(true);
             cache = rateRegistry.get(address.getCacheKey());
@@ -23,10 +23,22 @@ define([
 
             if (typeof address.customAttributes === "undefined") {
                 district = jQuery('[name="district"]').val();
+                ward_id = jQuery('[name="ward_id"]').val();
+                ward = jQuery('[name="ward"]').val();
+                city_id = jQuery('[name="city_id"]').val();
             } else {
                 jQuery.each(address.customAttributes, function (k, v) {
                     if (v.attribute_code == 'district') {
                         district = v.value;
+                    }
+                    if (v.attribute_code == 'ward_id') {
+                        ward_id = v.value;
+                    }
+                    if (v.attribute_code == 'ward') {
+                        ward = v.value;
+                    }
+                    if (v.attribute_code == 'city_id') {
+                        city_id = v.value;
                     }
                 });
             }
@@ -52,7 +64,10 @@ define([
                         'fax': address.fax,
                         'custom_attributes': address.customAttributes,
                         'extension_attributes': {
-                            'district': district
+                            'district': district,
+                            'ward': ward,
+                            'ward_id': ward_id,
+                            'city_id': city_id
                         },
                         'save_in_address_book': address.saveInAddressBook
                     }

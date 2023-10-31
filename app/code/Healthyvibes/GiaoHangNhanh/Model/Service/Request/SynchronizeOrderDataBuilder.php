@@ -35,9 +35,6 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
             self::TO_DISTRICT_ID => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0,
             self::WEIGHT => $order->getWeight() * $weightRate,
-            self::LENGTH => (int)$this->config->getValue('default_length'),
-            self::WIDTH => (int)$this->config->getValue('default_width'),
-            self::HEIGHT => (int)$this->config->getValue('default_height'),
             self::SERVICE_TYPE_ID => 2, //2: E-commerce Delivery, 5: Traditional Delivery
             self::PAYMENT_TYPE_ID => (int)$this->config->getValue('payment_type'),
             self::REQUIRED_NOTE => $this->config->getValue('note_code'),

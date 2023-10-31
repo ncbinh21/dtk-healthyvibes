@@ -138,6 +138,14 @@ abstract class GHN extends AbstractCarrier implements CarrierInterface
     }
 
     /**
+     * @return true
+     */
+    public function isTrackingAvailable()
+    {
+        return true;
+    }
+
+    /**
      * @param RateRequest $request
      * @return string|null
      */
