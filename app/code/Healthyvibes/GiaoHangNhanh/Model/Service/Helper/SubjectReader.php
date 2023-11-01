@@ -217,7 +217,7 @@ class SubjectReader extends \Healthyvibes\IntegrationBase\Model\Service\SubjectR
      * @param array $subject
      * @return array
      */
-    public static function readResponseData(array $subject)
+    public static function  readResponseData(array $subject)
     {
         if (empty($subject['data'])) {
             throw new \InvalidArgumentException('Response data should be provided');

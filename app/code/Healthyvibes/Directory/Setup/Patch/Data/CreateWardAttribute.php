@@ -81,7 +81,7 @@ class CreateWardAttribute implements DataPatchInterface
         $wardIdAttribute->getResource()->save($wardIdAttribute);
 
         $customerSetup->addAttribute('customer_address', 'ward', [
-            'type'          => 'varchar',
+            'type'          => 'static',
             'label'         => 'Ward Name',
             'input'         => 'hidden',
             'required'      =>  true,

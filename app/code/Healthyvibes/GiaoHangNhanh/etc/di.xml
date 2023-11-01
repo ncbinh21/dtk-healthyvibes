@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Healthyvibes\GiaoHangNhanh\Api\UpdateStatusInterface" type="Healthyvibes\GiaoHangNhanh\Model\Api\UpdateStatus"/>
     <type name="Healthyvibes\GiaoHangNhanh\Console\GenerateRegionCommand">
         <arguments>
             <!-- configure the command name via constructor $name argument -->
@@ -28,9 +29,9 @@
     <type name="Magento\Shipping\Model\Shipping">
         <plugin name="CollectRatesBefore" type="Healthyvibes\GiaoHangNhanh\Plugin\Shipping\Model\Shipping" sortOrder="22" />
     </type>
-    <type name="Magento\Sales\Model\Order">
-        <plugin name="CanCancelAfter" type="Healthyvibes\GiaoHangNhanh\Plugin\Sales\Model\Order" sortOrder="12" />
-    </type>
+<!--    <type name="Magento\Sales\Model\Order">-->
+<!--        <plugin name="CanCancelAfter" type="Healthyvibes\GiaoHangNhanh\Plugin\Sales\Model\Order" sortOrder="12" />-->
+<!--    </type>-->
     <!--Extensions-->
     <type name="Healthyvibes\GiaoHangNhanh\Model\Carrier\GHN">
         <arguments>
@@ -111,6 +112,7 @@
             <argument name="client" xsi:type="object">GhnZendHttpClient</argument>
             <argument name="validator" xsi:type="object">Healthyvibes\GiaoHangNhanh\Model\Service\Validator\SynchronizeOrderValidator</argument>
             <argument name="handler" xsi:type="object">Healthyvibes\GiaoHangNhanh\Model\Service\Response\SynchronizeOrderHandler</argument>
+            <argument name="resultKey" xsi:type="string">create_order</argument>
         </arguments>
     </virtualType>
     <virtualType name="GetDistrictsCommand" type="Healthyvibes\GiaoHangNhanh\Model\Service\Command\ServiceCommand">
@@ -175,6 +177,25 @@
         </arguments>
     </type>
     <!--end logger-->
+
+    <virtualType name="LogResponseStatus" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/giaohangnhanh_status.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LogResponseStatusLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">LogResponseStatus</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Healthyvibes\GiaoHangNhanh\Model\Api\UpdateStatus">
+        <arguments>
+            <argument name="logger" xsi:type="object">LogResponseStatusLogger</argument>
+        </arguments>
+    </type>
+
     <virtualType name="GhnZendHttpClient" type="Healthyvibes\GiaoHangNhanh\Model\Service\Http\Client\Zend">
         <arguments>
             <argument name="logger" xsi:type="object">GhnLogger</argument>

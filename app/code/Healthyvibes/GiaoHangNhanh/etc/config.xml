@@ -28,7 +28,7 @@
                 <sallowspecific>0</sallowspecific>
                 <model>Healthyvibes\GiaoHangNhanh\Model\Carrier\GHN\Express</model>
                 <name>Giao Hang Nhanh(Express)</name>
-                <title>Giao Hang Nhanh</title>
+                <title>Giao Hang Nhanh Express</title>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
                 <handling_type>F</handling_type>
             </giaohangnhanh_express>
@@ -37,7 +37,7 @@
                 <sallowspecific>0</sallowspecific>
                 <model>Healthyvibes\GiaoHangNhanh\Model\Carrier\GHN\Standard</model>
                 <name>Giao Hang Nhanh(Standard)</name>
-                <title>Giao Hang Nhanh</title>
+                <title>Giao Hang Nhanh Standard</title>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
                 <handling_type>F</handling_type>
             </giaohangnhanh_standard>
