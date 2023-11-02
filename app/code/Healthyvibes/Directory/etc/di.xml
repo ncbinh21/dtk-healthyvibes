@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="\Magento\Framework\Locale\FormatInterface">
-        <plugin name="healthyvibes_directory_fix_number_with_comma" type="Healthyvibes\Directory\Plugin\Locale\FormatPlugin"/>
-    </type>
-
+    <preference for="Magento\Quote\Model\ShippingMethodManagement" type="Healthyvibes\Directory\Rewrite\Quote\Model\ShippingMethodManagement"/>
     <type name="Magento\Directory\Model\ResourceModel\Region\Collection">
         <plugin name="healthyvibes_directory_custom_region_order"
                 type="Healthyvibes\Directory\Plugin\RegionCollectionPlugin" sortOrder="10"/>

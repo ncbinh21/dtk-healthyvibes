@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<!--    <event name="sales_order_place_after">-->
+<!--        <observer name="sync_order_after_placing" instance="Healthyvibes\GiaoHangNhanh\Observer\SalesOrderPlaceAfterObserver"/>-->
+<!--    </event>-->
+    <event name="order_cancel_after">
+        <observer name="cancel_giaohangnhanh_shipment_for_order" instance="Healthyvibes\GiaoHangNhanh\Observer\SalesOrderCancelAfterObserver"/>
+    </event>
+    <event name="sales_order_shipment_save_after">
+        <observer name="sync_order_after_create_shipment" instance="Healthyvibes\GiaoHangNhanh\Observer\SaveShipmentAfterObserver"/>
+    </event>
+</config>

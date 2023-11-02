@@ -51,4 +51,22 @@ class City extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         return $this;
     }
+
+    /**
+     * @param $cityId
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function loadById($cityId)
+    {
+        $connection = $this->getConnection();
+        $select = $connection->select()->from(
+            ['city' => $this->getMainTable()]
+        )->where(
+            'city.city_id = ?',
+            $cityId
+        );
+
+        return $connection->fetchRow($select);
+    }
 }

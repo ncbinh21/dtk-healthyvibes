@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
     <system>
-        <tab id="cpanel" translate="label" sortOrder="100" class="solwin_freego_logo">
+        <tab id="cpanel" translate="label" sortOrder="910" class="solwin_freego_logo">
             <label>Freego</label>
         </tab>
         <section id="cpanelsection" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">

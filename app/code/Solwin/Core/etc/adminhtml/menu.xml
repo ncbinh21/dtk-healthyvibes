@@ -11,6 +11,6 @@ Solwin Infotech
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
     <menu>
-        <add id="Solwin_Extensions::extensions" title="Solwin" module="Magento_Backend" sortOrder="10" resource="Solwin_Extensions::extensions" />
+        <add id="Solwin_Extensions::extensions" title="Solwin" module="Magento_Backend" sortOrder="920" resource="Solwin_Extensions::extensions" />
     </menu>
 </config>
