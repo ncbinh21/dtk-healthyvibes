@@ -12,6 +12,8 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Webapi\Rest\Request as ApiRequest;
 use Healthyvibes\Directory\Model\ResourceModel\City;
 use Healthyvibes\Directory\Model\ResourceModel\Ward;
+use Psr\Log\LoggerInterface;
+use Healthyvibes\InventoryAdminUi\Helper\Data as DataHelper;
 
 /**
  * Class AbstractDataBuilder
@@ -43,7 +45,6 @@ abstract class AbstractDataBuilder implements BuilderInterface
     const NAME = 'name';
     const CODE = 'code';
     const QUANTITY = 'quantity';
-
 
     /**
      * @var ConfigInterface
@@ -91,6 +92,16 @@ abstract class AbstractDataBuilder implements BuilderInterface
     protected $ward;
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
+     * @var DataHelper
+     */
+    protected $dataHelper;
+
+    /**
      * AbstractDataBuilder constructor.
      * @param ConfigInterface $config
      * @param StoreManagerInterface $storeManager
@@ -101,6 +112,8 @@ abstract class AbstractDataBuilder implements BuilderInterface
      * @param ApiRequest $request
      * @param City $city
      * @param Ward $ward
+     * @param DataHelper $dataHelper
+     * @param LoggerInterface $logger
      */
     public function __construct(
         ConfigInterface $config,
@@ -111,7 +124,9 @@ abstract class AbstractDataBuilder implements BuilderInterface
         Rate $helperRate,
         ApiRequest $request,
         City $city,
-        Ward $ward
+        Ward $ward,
+        DataHelper $dataHelper,
+        LoggerInterface $logger
     ) {
         $this->config = $config;
         $this->storeManager = $storeManager;
@@ -122,5 +137,7 @@ abstract class AbstractDataBuilder implements BuilderInterface
         $this->request = $request;
         $this->city = $city;
         $this->ward = $ward;
+        $this->dataHelper = $dataHelper;
+        $this->logger = $logger;
     }
 }

@@ -1,0 +1,11 @@
+{
+    "inventory_source": {
+        "column": {
+            "city_id": true,
+            "ward_id": true,
+            "ward": true,
+            "domain_id": true,
+            "shop_id_ghn": true
+        }
+    }
+}

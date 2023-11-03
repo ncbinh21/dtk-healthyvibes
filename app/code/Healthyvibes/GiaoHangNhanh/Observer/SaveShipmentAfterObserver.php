@@ -59,7 +59,7 @@ class SaveShipmentAfterObserver implements ObserverInterface
         /** @var \Magento\Sales\Model\Order $order */
         $order = $shipment->getOrder();
 
-        if (str_contains($order->getShippingMethod(), Config::GHN_CODE)) {
+        if (str_contains($order->getShippingMethod(), Config::GHN_CODE) || $order->getShippingMethod() == 'freeshipping_freeshipping') {
             try {
                 $result = $this->commandPool->get('synchronize_order')->execute([
                     'order' => $order,

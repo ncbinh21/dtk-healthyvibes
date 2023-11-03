@@ -57,7 +57,7 @@ define([
                 isCityRequired,
                 option;
             if (!value) {
-                $('select[name=ward_id]').html(`<option>${$t("Please select a ward.")}</option>`);
+                $('select[name=ward_id]').html(`<option value="0000">${$t("Please select a ward.")}</option>`);
                 return;
             } else {
                 if (typeof $('select[name=region_id]').find('option:selected')[0] !== 'undefined') {

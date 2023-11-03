@@ -37,9 +37,11 @@ class ServiceDetailsDataBuilder extends AbstractDataBuilder
         if ($cityId) {
             $cityData = $this->city->loadById($cityId);
         }
+        $regionId = isset($address['address']['regionId']) ? $address['address']['regionId'] : $rateRequest->getShippingAddress()->getRegionId();
+        $shopData = $this->dataHelper->getSourceFromRegion($regionId);
         $data = [
-            self::SHOP_ID => 885, //todo get from store
-            self::FROM_DISTRICT => 1447, //todo get from store
+            self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
+            self::FROM_DISTRICT => isset($shopData['region_id']) ? (int)$shopData['region_id'] : '',
             self::TO_DISTRICT => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0
         ];
 
