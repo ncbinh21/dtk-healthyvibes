@@ -195,6 +195,11 @@
             <argument name="logger" xsi:type="object">LogResponseStatusLogger</argument>
         </arguments>
     </type>
+    <type name="Healthyvibes\GiaoHangNhanh\Model\Service\Request\ShippingDetailsDataBuilder">
+        <arguments>
+            <argument name="logger" xsi:type="object">LogResponseStatusLogger</argument>
+        </arguments>
+    </type>
 
     <virtualType name="GhnZendHttpClient" type="Healthyvibes\GiaoHangNhanh\Model\Service\Http\Client\Zend">
         <arguments>

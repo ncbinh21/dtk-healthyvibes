@@ -4,6 +4,7 @@ namespace Healthyvibes\GiaoHangNhanh\Model\Service\Request;
 
 use Healthyvibes\GiaoHangNhanh\Model\Config;
 use Healthyvibes\GiaoHangNhanh\Model\Service\Helper\SubjectReader;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Healthyvibes\Directory\Model\City;
 use Healthyvibes\Directory\Model\Ward;
@@ -39,15 +40,18 @@ class ShippingDetailsDataBuilder extends AbstractDataBuilder
             $cityId = $rateRequest->getShippingAddress()->getCityId();
             $wardId = $rateRequest->getShippingAddress()->getWardId();
         }
-        if ($cityId) {
+        if ($cityId && $wardId) {
             $cityData = $this->city->loadById($cityId);
-        }
-        if ($wardId) {
             $wardData = $this->ward->loadById($wardId);
+        } else {
+            throw new LocalizedException(__('City or ward is null'));
         }
+
         $rate = $this->baseConfig->getWeightUnit() == self::DEFAULT_WEIGHT_UNIT ? Config::KGS_G : Config::LBS_G;
+        $regionId = isset($address['address']['regionId']) ? $address['address']['regionId'] : $rateRequest->getShippingAddress()->getRegionId();
+        $shopData = $this->dataHelper->getSourceFromRegion($regionId);
         $data = [
-            self::SHOP_ID => 885, //todo get from store
+            self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
             self::TO_DISTRICT_ID => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0,
             self::WEIGHT => $rateRequest->getShippingAddress()->getWeight() * $rate,

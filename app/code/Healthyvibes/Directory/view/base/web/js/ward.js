@@ -35,7 +35,7 @@ define([
 
         resetRegion: function () {
             registry.get((this.parentName + '.' + 'region_id'), function (regionId) { //customName == custom Entry??
-                $('select[name=ward_id]').html(`<option>${$t("Please select a ward.")}</option>`);
+                $('select[name=ward_id]').html(`<option value="0000">${$t("Please select a ward.")}</option>`);
             });
         },
 

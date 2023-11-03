@@ -26,9 +26,11 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $weightRate = $this->baseConfig->getWeightUnit() == self::DEFAULT_WEIGHT_UNIT ? Config::KGS_G : Config::LBS_G;
         $cityData = $this->city->loadById($order->getShippingAddress()->getCityId());
         $wardData = $this->ward->loadById($order->getShippingAddress()->getWardId());
+        $regionId = $order->getShippingAddress()->getRegionId();
+        $shopData = $this->dataHelper->getSourceFromRegion($regionId);
 
         return [
-            self::SHOP_ID => 885,//todo get from store
+            self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
             self::TO_NAME => $order->getCustomerName(),
             self::TO_PHONE => $order->getShippingAddress()->getTelephone(),
             self::TO_ADDRESS => $order->getShippingAddress()->getStreetLine(1),
