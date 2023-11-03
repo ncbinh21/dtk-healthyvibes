@@ -48,8 +48,10 @@ class ShippingDetailsDataBuilder extends AbstractDataBuilder
         }
 
         $rate = $this->baseConfig->getWeightUnit() == self::DEFAULT_WEIGHT_UNIT ? Config::KGS_G : Config::LBS_G;
+        $regionId = isset($address['address']['regionId']) ? $address['address']['regionId'] : $rateRequest->getShippingAddress()->getRegionId();
+        $shopData = $this->dataHelper->getSourceFromRegion($regionId);
         $data = [
-            self::SHOP_ID => 885, //todo get from store
+            self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
             self::TO_DISTRICT_ID => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0,
             self::WEIGHT => $rateRequest->getShippingAddress()->getWeight() * $rate,
