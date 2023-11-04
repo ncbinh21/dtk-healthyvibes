@@ -37,5 +37,7 @@ if ($newsletter_show) {
                 </div>
             </form>
         </div>
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('social_network')->toHtml(); ?>
     </div>
-<?php } ?>
+<?php
+} ?>
