@@ -19,20 +19,18 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_categoryFactory;
 
     /**
-     * construct.
-     *
-     * @param \Magento\Backend\Block\Template\Context                         $context
-     * @param \Magento\Backend\Helper\Data                                    $backendHelper
-     * @param \Magento\Catalog\Model\CategoryFactory                          $categoryFactory
+     * Grid constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Backend\Helper\Data $backendHelper
+     * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
      * @param \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory
-     * @param array                                                           $data
+     * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
         \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory,
-
         array $data = []
     ) {
         $this->_magicmenuCollectionFactory = $magicmenuCollectionFactory;
@@ -53,10 +51,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 
     protected function _prepareCollection()
     {
-
         $store = $this->getRequest()->getParam('store');
         $collection = $this->_magicmenuCollectionFactory->create();
-        if($store) $collection->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)));
+        if ($store) {
+            $collection->addFieldToFilter('stores', [ ['finset' => 0], ['finset' => $store]]);
+        }
         $collection->addFieldToFilter('extra', 0);
         $this->setCollection($collection);
 
@@ -68,7 +67,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareColumns()
     {
-
         $this->addColumn(
             'cat_id',
             [

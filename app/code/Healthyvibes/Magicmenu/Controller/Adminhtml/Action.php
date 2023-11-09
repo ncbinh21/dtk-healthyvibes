@@ -33,9 +33,16 @@ abstract class Action extends \Magento\Backend\App\Action
      */
     protected $resultRedirectFactory;
 
+    /**
+     * @var \Healthyvibes\Magicmenu\Model\MagicmenuFactory
+     */
     protected $_magicmenuFactory;
 
+    /**
+     * @var \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory
+     */
     protected $_magicmenuCollectionFactory;
+
     /**
      * Registry object.
      *
@@ -50,6 +57,18 @@ abstract class Action extends \Magento\Backend\App\Action
      */
     protected $_fileFactory;
 
+    /**
+     * Action constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Healthyvibes\Magicmenu\Model\MagicmenuFactory $magicmenuFactory
+     * @param \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory
+     * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
+     * @param \Magento\Backend\Helper\Js $jsHelper
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Healthyvibes\Magicmenu\Model\MagicmenuFactory $magicmenuFactory,
@@ -78,7 +97,7 @@ abstract class Action extends \Magento\Backend\App\Action
     protected function _isAllowed()
     {
         $namespace = (new \ReflectionObject($this))->getNamespaceName();
-        $string = strtolower(str_replace(__NAMESPACE__ . '\\','', (string) $namespace));
+        $string = strtolower(str_replace(__NAMESPACE__ . '\\', '', (string) $namespace));
         $action =  explode('\\', (string) $string);
         $action =  array_shift($action);
         return $this->_authorization->isAllowed("Healthyvibes_Magicmenu::magicmenu_$action");

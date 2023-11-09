@@ -19,12 +19,11 @@ class Category extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
     protected $_categoryFactory;
 
     /**
-     * [__construct description].
-     *
-     * @param \Magento\Backend\Block\Context              $context
-     * @param \Magento\Store\Model\StoreManagerInterface  $storeManager
-     * @param \Magento\Cms\Model\BlockFactory $blockFactory
-     * @param array                                       $data
+     * Category constructor.
+     * @param \Magento\Backend\Block\Context $context
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
+     * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Context $context,
@@ -50,6 +49,6 @@ class Category extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
         $category = $this->_categoryFactory->create()->load($id);
         $url = $this->getUrl('catalog/category/edit', ['id' => $id]);
 
-        return '<a href="'.$url.'" alt="'.$url.'" >'. $category->getName() .'</a>';
+        return '<a href="' . $url . '" alt="' . $url . '" >' . $category->getName() . '</a>';
     }
 }

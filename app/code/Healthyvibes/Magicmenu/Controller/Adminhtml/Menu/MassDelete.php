@@ -5,7 +5,7 @@ namespace Healthyvibes\Magicmenu\Controller\Adminhtml\Menu;
 class MassDelete extends \Healthyvibes\Magicmenu\Controller\Adminhtml\Action
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {

@@ -4,6 +4,9 @@ namespace Healthyvibes\Magicmenu\Controller\Adminhtml\Menu;
 
 class Delete extends \Healthyvibes\Magicmenu\Controller\Adminhtml\Action
 {
+    /**
+     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('magicmenu_id');

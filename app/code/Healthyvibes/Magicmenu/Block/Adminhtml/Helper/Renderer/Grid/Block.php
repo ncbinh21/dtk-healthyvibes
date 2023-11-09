@@ -19,12 +19,11 @@ class Block extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     protected $_blockFactory;
 
     /**
-     * [__construct description].
-     *
-     * @param \Magento\Backend\Block\Context              $context
-     * @param \Magento\Store\Model\StoreManagerInterface  $storeManager
+     * Block constructor.
+     * @param \Magento\Backend\Block\Context $context
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Cms\Model\BlockFactory $blockFactory
-     * @param array                                       $data
+     * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Context $context,
@@ -47,12 +46,14 @@ class Block extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
     public function render(\Magento\Framework\DataObject $row)
     {
         $id = $row->getData($this->getColumn()->getIndex());
-        if(!$id) return;
+        if (!$id) {
+            return;
+        }
         $store = $this->getRequest()->getParam('store');
         $bock = $this->_bockFactory->create();
         $bock->setStoreId($store)->load($id);
         $url = $this->getUrl('cms/block/edit', ['block_id' => $bock->getId()]);
 
-        return '<a href="'.$url.'" alt="'.$url.'" >'. $bock->getTitle() .'</a>';
+        return '<a href="' . $url . '" alt="' . $url . '" >' . $bock->getTitle() . '</a>';
     }
 }

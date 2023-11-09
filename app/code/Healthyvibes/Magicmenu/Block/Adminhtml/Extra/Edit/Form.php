@@ -2,9 +2,12 @@
 
 namespace Healthyvibes\Magicmenu\Block\Adminhtml\Extra\Edit;
 
-
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
+    /**
+     * @return Form
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     protected function _prepareForm()
     {
         /** @var \Magento\Framework\Data\Form $form */

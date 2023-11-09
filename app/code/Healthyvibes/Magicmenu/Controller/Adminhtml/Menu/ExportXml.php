@@ -6,6 +6,10 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 
 class ExportXml extends \Healthyvibes\Magicmenu\Controller\Adminhtml\Action
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @throws \Exception
+     */
     public function execute()
     {
         $fileName = 'menus.xml';

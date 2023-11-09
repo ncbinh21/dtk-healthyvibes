@@ -3,6 +3,7 @@
 namespace Healthyvibes\Magicmenu\Block\Adminhtml\Extra\Edit\Tab;
 
 use Healthyvibes\Magicmenu\Model\Status;
+
 class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
@@ -26,6 +27,17 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     protected $_systemStore;
 
+    /**
+     * Form constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\Data\FormFactory $formFactory
+     * @param \Magento\Framework\DataObjectFactory $objectFactory
+     * @param \Magento\Store\Model\System\Store $systemStore
+     * @param \Healthyvibes\Magicmenu\Model\Magicmenu $magicmenu
+     * @param \Healthyvibes\Magicmenu\Model\System\Config\Blocks $blocks
+     * @param array $data
+     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,

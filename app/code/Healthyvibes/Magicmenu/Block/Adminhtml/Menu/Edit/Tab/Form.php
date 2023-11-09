@@ -3,6 +3,7 @@
 namespace Healthyvibes\Magicmenu\Block\Adminhtml\Menu\Edit\Tab;
 
 use Healthyvibes\Magicmenu\Model\Status;
+
 class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
@@ -14,7 +15,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      * @var Healthyvibes\Magicmenu\Model\System\Config\Blocks
      */
     protected $_blocks;
-
 
     /**
      * @var Healthyvibes\Magicmenu\Model\System\Config\Category
@@ -32,6 +32,18 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     protected $_systemStore;
 
+    /**
+     * Form constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\Data\FormFactory $formFactory
+     * @param \Magento\Framework\DataObjectFactory $objectFactory
+     * @param \Magento\Store\Model\System\Store $systemStore
+     * @param \Healthyvibes\Magicmenu\Model\Magicmenu $magicmenu
+     * @param \Healthyvibes\Magicmenu\Model\System\Config\Blocks $blocks
+     * @param \Healthyvibes\Magicmenu\Model\System\Config\Category $category
+     * @param array $data
+     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
@@ -83,7 +95,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             $fieldset->addField('magicmenu_id', 'hidden', ['name' => 'magicmenu_id']);
         }
 
-        $cat = $fieldset->addField('cat_id', 'select',
+        $cat = $fieldset->addField(
+            'cat_id',
+            'select',
             [
                 'label' => __('Category'),
                 'title' => __('Category'),
@@ -96,7 +110,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $cat_proportion = $fieldset->addField('cat_proportion', 'text',
+        $cat_proportion = $fieldset->addField(
+            'cat_proportion',
+            'text',
             [
             'label'     => __('Proportion: Category'),
             'class'     => 'validate-greater-than-zero',
@@ -129,7 +145,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         //     '
         // );
 
-        $cat_col= $fieldset->addField('cat_col', 'text',
+        $cat_col= $fieldset->addField(
+            'cat_col',
+            'text',
             [
             'label'     => __('Columns category'),
             'class'     => 'validate-greater-than-zero',
@@ -138,7 +156,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $top = $fieldset->addField('top', 'select',
+        $top = $fieldset->addField(
+            'top',
+            'select',
             [
                 'label' => __('Block Top'),
                 'title' => __('Block Top'),
@@ -150,7 +170,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $right = $fieldset->addField('right', 'select',
+        $right = $fieldset->addField(
+            'right',
+            'select',
             [
                 'label' => __('Block Right'),
                 'title' => __('Block Right'),
@@ -162,7 +184,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $right_proportion = $fieldset->addField('right_proportion', 'text',
+        $right_proportion = $fieldset->addField(
+            'right_proportion',
+            'text',
             [
             'label'     => __('Proportion: Block Right'),
             'class'     => 'validate-zero-or-greater',
@@ -178,8 +202,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 "jquery",
             ],  function($){
                     jQuery(document).ready(function($) {
-                        var map     = "#'.$right->getHtmlId().'";
-                        var depend  = "#'.$right_proportion->getHtmlId().'";
+                        var map     = "#' . $right->getHtmlId() . '";
+                        var depend  = "#' . $right_proportion->getHtmlId() . '";
                         if (!$(map).val()) {$(depend).prop("disabled", true); }
                         $(map).change(function() {
                             if (!$(map).val()){
@@ -195,8 +219,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             '
         );
 
-
-        $bottom = $fieldset->addField('bottom', 'select',
+        $bottom = $fieldset->addField(
+            'bottom',
+            'select',
             [
                 'label' => __('Block Bottom'),
                 'title' => __('Block Bottom'),
@@ -208,7 +233,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $left = $fieldset->addField('left', 'select',
+        $left = $fieldset->addField(
+            'left',
+            'select',
             [
                 'label' => __('Block Left'),
                 'title' => __('Block Left'),
@@ -220,7 +247,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $left_proportion = $fieldset->addField('left_proportion', 'text',
+        $left_proportion = $fieldset->addField(
+            'left_proportion',
+            'text',
             [
             'label'     => __('Proportion: Block Left'),
             'class'     => 'validate-zero-or-greater',
@@ -236,8 +265,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 "jquery",
             ],  function($){
                     jQuery(document).ready(function($) {
-                        var map     = "#'.$left->getHtmlId().'";
-                        var depend  = "#'.$left_proportion->getHtmlId().'";
+                        var map     = "#' . $left->getHtmlId() . '";
+                        var depend  = "#' . $left_proportion->getHtmlId() . '";
                         if (!$(map).val()) {$(depend).prop("disabled", true); }
                         $(map).change(function() {
                             if (!$(map).val()){
@@ -279,7 +308,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             $model->setStoreId($this->_storeManager->getStore(true)->getId());
         }
 
-        $fieldset->addField('status', 'select',
+        $fieldset->addField(
+            'status',
+            'select',
             [
                 'label' => __('Status'),
                 'title' => __('Status'),
