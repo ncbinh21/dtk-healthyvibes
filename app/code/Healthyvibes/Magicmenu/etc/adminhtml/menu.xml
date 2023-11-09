@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Healthyvibes_Magicmenu::elements" title="Healthyvibes Mega Menu" module="Healthyvibes_Magicmenu" resource="Healthyvibes_Magicmenu::banner" parent="Healthyvibes_Core::extensions" sortOrder="10"/>
+        <add id="Healthyvibes_Magicmenu::menu" title="Menu" module="Healthyvibes_Magicmenu" resource="Healthyvibes_Magicmenu::magicmenu_menu" parent="Healthyvibes_Magicmenu::elements" sortOrder="10" action="magicmenu/menu" />
+        <add id="Healthyvibes_Magicmenu::extra" title="Extra Menu" module="Healthyvibes_Magicmenu" resource="Healthyvibes_Magicmenu::magicmenu_extra" parent="Healthyvibes_Magicmenu::elements" sortOrder="20" action="magicmenu/extra"/>
+    </menu>
+</config>
