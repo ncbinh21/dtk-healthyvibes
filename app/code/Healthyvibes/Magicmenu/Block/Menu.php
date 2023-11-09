@@ -6,13 +6,14 @@ use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\Data\Tree\Node\Collection;
 use Magento\Framework\Data\Tree\NodeFactory;
 use Magento\Framework\Data\TreeFactory;
+use Magento\Framework\Serialize\Serializer\Json;
 
 class Menu extends \Magento\Catalog\Block\Navigation
 {
     const DEFAULT_CACHE_TAG = 'HEALTHYVIBES_MAGICMENU';
 
     /**
-     * @var \Magento\Framework\Serialize\Serializer\Json
+     * @var Json
      */
     private $serializer;
 
@@ -40,12 +41,24 @@ class Menu extends \Magento\Catalog\Block\Navigation
      */
     protected $_magicmenuCollectionFactory;
 
+    /**
+     * @var string
+     */
     protected $_urlMedia;
 
+    /**
+     * @var string
+     */
     protected $_dirMedia;
 
+    /**
+     * @var array
+     */
     protected $extData = [];
 
+    /**
+     * @var object
+     */
     public $_sysCfg;
 
     /**
@@ -53,8 +66,30 @@ class Menu extends \Magento\Catalog\Block\Navigation
      */
     public $_helper;
 
+    /**
+     * @var
+     */
     public $rootCategory;
 
+    /**
+     * Menu constructor.
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
+     * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
+     * @param \Magento\Catalog\Model\Layer\Resolver $layerResolver
+     * @param \Magento\Framework\App\Http\Context $httpContext
+     * @param \Magento\Catalog\Helper\Category $catalogCategory
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Catalog\Model\Indexer\Category\Flat\State $flatState
+     * @param Json|null $serializer
+     * @param \Healthyvibes\Magicmenu\Helper\Data $helper
+     * @param \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory
+     * @param NodeFactory $nodeFactory
+     * @param TreeFactory $treeFactory
+     * @param array $data
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\ValidatorException
+     */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
@@ -64,11 +99,8 @@ class Menu extends \Magento\Catalog\Block\Navigation
         \Magento\Catalog\Helper\Category $catalogCategory,
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Model\Indexer\Category\Flat\State $flatState,
-        \Magento\Framework\Serialize\Serializer\Json $serializer = null,
-
-        // +++++++++add new +++++++++
+        Json $serializer = null,
         \Healthyvibes\Magicmenu\Helper\Data $helper,
-        // \Healthyvibes\Magicmenu\Model\CategoryFactory $categoryFactory,
         \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory,
         NodeFactory $nodeFactory,
         TreeFactory $treeFactory,
@@ -78,7 +110,7 @@ class Menu extends \Magento\Catalog\Block\Navigation
         $this->_magicmenuCollectionFactory = $magicmenuCollectionFactory;
         $this->nodeFactory = $nodeFactory;
         $this->treeFactory = $treeFactory;
-        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Serialize\Serializer\Json::class);
+        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()->get(Json::class);
         $configModule  = $this->_helper->getConfigModule();
         if (is_null($configModule['topmenu']['notIncludeNav'])) {
             $configModule['topmenu']['notIncludeNav'] = '';
@@ -161,6 +193,11 @@ class Menu extends \Magento\Catalog\Block\Navigation
         return $this->getRootCategory()->getName();
     }
 
+    /**
+     * @return array|mixed|string|null
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function drawHomeMenu()
     {
         if ($this->hasData('homeMenu')) {
@@ -215,6 +252,10 @@ class Menu extends \Magento\Catalog\Block\Navigation
         return $drawHomeMenu;
     }
 
+    /**
+     * @return array|mixed|string[]|null
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function drawMainMenu()
     {
         if ($this->hasData('mainMenu')) {

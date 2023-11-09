@@ -7,20 +7,17 @@ use Healthyvibes\Magicmenu\Model\Status;
 class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
-     * magicmenu collection factory.
-     *
      * @var \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory
      */
     protected $_magicmenuCollectionFactory;
 
 
     /**
-     * construct.
-     *
-     * @param \Magento\Backend\Block\Template\Context                         $context
-     * @param \Magento\Backend\Helper\Data                                    $backendHelper
+     * Grid constructor.
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Healthyvibes\Magicmenu\Model\ResourceModel\Magicmenu\CollectionFactory $magicmenuCollectionFactory
-     * @param array                                                           $data
+     * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
@@ -34,6 +31,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         parent::__construct($context, $backendHelper, $data);
     }
 
+    /**
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
     protected function _construct()
     {
         parent::_construct();
@@ -44,6 +44,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->setUseAjax(true);
     }
 
+    /**
+     * @return Grid
+     */
     protected function _prepareCollection()
     {
         $store = $this->getRequest()->getParam('store');

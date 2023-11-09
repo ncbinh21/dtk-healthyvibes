@@ -5,7 +5,7 @@ namespace Healthyvibes\Magicmenu\Controller\Adminhtml\Menu;
 class Index extends \Healthyvibes\Magicmenu\Controller\Adminhtml\Action
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @return \Magento\Backend\Model\View\Result\Forward|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {
