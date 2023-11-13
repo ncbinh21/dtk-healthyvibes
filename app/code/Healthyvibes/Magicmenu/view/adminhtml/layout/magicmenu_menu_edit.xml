@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Menu Tabs</title>
+    </head>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">Healthyvibes_Magicmenu::magicmenu</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
+                <action method="setUseConfirm">
+                    <argument name="params" xsi:type="string">1</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+        <block class="Healthyvibes\Magicmenu\Block\Adminhtml\Menu\Edit" name="menu_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+        <block class="Healthyvibes\Magicmenu\Block\Adminhtml\Menu\Edit\Tabs" name="menu_edit_tabs">
+            <block class="Healthyvibes\Magicmenu\Block\Adminhtml\Menu\Edit\Tab\Form" name="menu_edit_tab_form"/>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">main_section</argument>
+                <argument name="block" xsi:type="string">menu_edit_tab_form</argument>
+            </action>
+        </block>
+        </referenceContainer>
+    </body>
+</page>

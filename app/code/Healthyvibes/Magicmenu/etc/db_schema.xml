@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="healthyvibes_magicmenu" resource="default" engine="innodb"
+           comment="Healthyvibes Magicmenu">
+        <column xsi:type="int" name="magicmenu_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Magicmenu ID"/>
+        <column xsi:type="varchar" name="cat_id" nullable="true" length="255" comment="Category Id"/>
+        <column xsi:type="varchar" name="cat_col" nullable="true" length="255" comment="Columns category"/>
+        <column xsi:type="int" name="cat_proportion" nullable="true" default="0" unsigned="false" comment="Proportion category"/>
+        <column xsi:type="varchar" name="top" nullable="true" length="255" comment="Category content top"/>
+        <column xsi:type="varchar" name="right" nullable="true" length="255" comment="Category content right"/>
+        <column xsi:type="int" name="right_proportion" nullable="true" default="0" unsigned="false" comment="Proportion category content right"/>
+        <column xsi:type="varchar" name="bottom" nullable="true" length="255" comment="Category content bottom"/>
+        <column xsi:type="varchar" name="left" nullable="true" length="255" comment="Category content left"/>
+        <column xsi:type="int" name="left_proportion" nullable="true" default="0" unsigned="false" comment="Proportion category content left"/>
+
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Extra menu name"/>
+        <column xsi:type="varchar" name="magic_label" nullable="true" length="255" comment="Extra menu label"/>
+        <column xsi:type="varchar" name="link" nullable="true" length="255" comment="Extra menu link"/>
+        <column xsi:type="varchar" name="ext_content" nullable="true" length="255" comment="Extra menu content"/>
+        <column xsi:type="smallint" name="extra" nullable="false" default="0" comment="Is Extra"/>
+
+        <column xsi:type="varchar" name="stores" nullable="true" length="255" comment="Stores"/>
+        <column xsi:type="int" name="order" nullable="false" default="0" comment="Order"/>
+        <column xsi:type="smallint" name="status" nullable="false" default="1" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="magicmenu_id"/>
+        </constraint>
+    </table>
+</schema>
