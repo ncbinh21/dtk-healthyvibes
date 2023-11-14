@@ -3,8 +3,8 @@
 namespace Healthyvibes\Directory\Plugin\Model;
 
 use Magento\Directory\Model\Currency as CurrencyAlias;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\Request\Http;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * This class is consists of before method which is responsible for removing decimal zero
@@ -37,10 +37,7 @@ class Currency
      * @var array
      */
     protected $stores = [
-        'tw_laneige',
-        'vn_laneige',
-        'vn_sulwhasoo',
-        'default'
+        'vn_healthyvibes_storeview'
     ];
 
     /**
@@ -81,8 +78,8 @@ class Currency
         $storeCode = $this->storeManager->getStore()->getCode();
         if (in_array($storeCode, $this->stores)) {
             $precision = 0;
-            return [$price, $precision, $options, $includeContainer, $addBrackets];
         }
+        return [$price, $precision, $options, $includeContainer, $addBrackets];
     }
 
     /**
@@ -93,7 +90,8 @@ class Currency
      * @return string
      * @throws \Zend_Currency_Exception
      */
-    public function aroundFormatTxt(CurrencyAlias $subject, callable $proceed, $price, $options=[]) {
+    public function aroundFormatTxt(CurrencyAlias $subject, callable $proceed, $price, $options=[])
+    {
         if (!is_numeric($price)) {
             $price = $this->localeFormat->getNumber($price);
         }
