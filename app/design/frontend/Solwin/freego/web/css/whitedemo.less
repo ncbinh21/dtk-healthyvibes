@@ -312,10 +312,10 @@ margin: 0 auto 0 0;
 padding: 10px 15px 0;
 }
 .page-header .nav-toggle {
-top: 12px;
+top: 25px;
 }
 .page-header .logo {
-margin: 0 0 10px 35px;
+margin: 10px 0 10px 35px;
 }
 .page-header .minicart-wrapper {
 margin: 0 0 10px 10px;
@@ -328,7 +328,7 @@ width: 40px;
 text-align: center;
 }
 body .page-header .block-search .label::before {
-margin: 0 10px 0 0;
+margin: 10px 10px 0 0;
 height: 43px;
 line-height: 43px;
 }
@@ -347,3 +347,10 @@ line-height: 43px;
 .page-footer .footer.content .links a, .form.minisearch ::placeholder {
     color: #ffffff;
 }
+
+@media screen and (max-width: 767px) {
+    .products.products-grid .product-item, .page-products .product-item-info {
+        width: 50%;
+    }
+}
+
