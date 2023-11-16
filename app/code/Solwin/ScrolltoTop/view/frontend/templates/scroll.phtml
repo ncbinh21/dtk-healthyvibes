@@ -33,7 +33,7 @@ if ($enable && $moduleEnabled) {
                 . '<img class="scroll-img hover-img" src="' . $hover_path . '" alt="top-hover" />';
     }
     ?>
-
+    <a id="button-scroll-to-top"></a>
     <div id="scroll-to-top">
         <a class="scrollup" href="#" title="<?= $block->escapeHtml(__('Scroll to Top')) ?>" style="<?php if ($position == 1) { ?> right:10px; <?php } else { ?> left:10px; <?php } ?> ">
             <?php
@@ -64,4 +64,60 @@ if ($enable && $moduleEnabled) {
         background-color: #<?= /* @noEscape */ $bgHoverClr ?> !important;
         border-color: #<?= /* @noEscape */ $bgHoverClr ?> !important;
     }
+    #button-scroll-to-top {
+        display: inline-block;
+        background-color: #FF9800;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition: background-color .3s,
+        opacity .5s, visibility .5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+    #button-scroll-to-top::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+    #button-scroll-to-top:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+    #button-scroll-to-top:active {
+        background-color: #555;
+    }
+    #button-scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
 </style>
+<script>
+    require([
+        'jquery'
+    ], function($){
+        var btn = $('#button-scroll-to-top');
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 300) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+
+        btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+        });
+    })
+</script>
