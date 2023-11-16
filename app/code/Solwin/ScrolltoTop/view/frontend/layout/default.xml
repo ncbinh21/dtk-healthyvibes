@@ -7,7 +7,7 @@ Solwin ScrolltoTop Extension
 @category   Solwin
 @package    Solwin_ScrolltoTop
 @copyright  Copyright © 2006-2016 Solwin (https://www.solwininfotech.com)
-@license    https://www.solwininfotech.com/magento-extension-license/ 
+@license    https://www.solwininfotech.com/magento-extension-license/
 
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
@@ -18,7 +18,7 @@ Solwin ScrolltoTop Extension
     </head>
     <body>
         <referenceContainer name="before.body.end">
-            <block class="Solwin\ScrolltoTop\Block\ScrolltoTop" name="scrolltotop" template="Solwin_ScrolltoTop::scroll.phtml" ifconfig="scrollsection/scrollgroup/active" />
+            <block class="Solwin\ScrolltoTop\Block\ScrolltoTop" name="scrolltotop" template="Solwin_ScrolltoTop::scroll.phtml" />
         </referenceContainer>
     </body>
 </page>
