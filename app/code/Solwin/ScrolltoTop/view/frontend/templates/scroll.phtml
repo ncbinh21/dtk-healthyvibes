@@ -33,7 +33,6 @@ if ($enable && $moduleEnabled) {
                 . '<img class="scroll-img hover-img" src="' . $hover_path . '" alt="top-hover" />';
     }
     ?>
-    <a id="button-scroll-to-top"></a>
     <div id="scroll-to-top">
         <a class="scrollup" href="#" title="<?= $block->escapeHtml(__('Scroll to Top')) ?>" style="<?php if ($position == 1) { ?> right:10px; <?php } else { ?> left:10px; <?php } ?> ">
             <?php
@@ -49,6 +48,7 @@ if ($enable && $moduleEnabled) {
     <?php
 }
 ?>
+<a id="button-scroll-to-top"></a>
 <style>
     .scrollup:visited, .scrollup:active {
         color: #<?= /* @noEscape */ $textclr ?> !important;
