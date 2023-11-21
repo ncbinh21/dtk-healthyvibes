@@ -45,6 +45,8 @@ abstract class AbstractDataBuilder implements BuilderInterface
     const NAME = 'name';
     const CODE = 'code';
     const QUANTITY = 'quantity';
+    const INSURANCE_VALUE = 'insurance_value';
+    const MAX_INSURANCE_VALUE = 990000;
 
     /**
      * @var ConfigInterface
