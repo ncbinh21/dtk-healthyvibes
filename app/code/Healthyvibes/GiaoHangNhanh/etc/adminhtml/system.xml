@@ -82,6 +82,14 @@
                             <label>Displayed Error Message</label>
                             <config_path>carriers/giaohangnhanh_express/specificerrmsg</config_path>
                         </field>
+                        <field id="minimum_order_amount" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Minimum Order Amount</label>
+                            <config_path>carriers/giaohangnhanh_express/minimum_order_amount</config_path>
+                        </field>
+                        <field id="maximum_order_amount" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                             <label>Maximum Order Amount</label>
+                             <config_path>carriers/giaohangnhanh_express/maximum_order_amount</config_path>
+                         </field>
                     </group>
                     <group id="giaohangnhanh_standard" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Standard Method</label>
@@ -124,6 +132,14 @@
                             <label>Displayed Error Message</label>
                             <config_path>carriers/giaohangnhanh_standard/specificerrmsg</config_path>
                         </field>
+                        <field id="minimum_order_amount" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Minimum Order Amount</label>
+                            <config_path>carriers/giaohangnhanh_standard/minimum_order_amount</config_path>
+                        </field>
+                        <field id="maximum_order_amount" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                             <label>Maximum Order Amount</label>
+                             <config_path>carriers/giaohangnhanh_standard/maximum_order_amount</config_path>
+                         </field>
                     </group>
                 </group>
             </group>

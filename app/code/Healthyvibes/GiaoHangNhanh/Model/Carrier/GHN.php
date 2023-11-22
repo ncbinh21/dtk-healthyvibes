@@ -108,8 +108,7 @@ abstract class GHN extends AbstractCarrier implements CarrierInterface
         if (!$this->getConfigFlag(Config::IS_ACTIVE)) {
             return false;
         }
-
-        if ($shippingCost = $this->estimateShippingCost($request)) {
+        if ($this->isActiveShippingMethod($request) && $shippingCost = $this->estimateShippingCost($request)) {
             /** @var Result $result */
             $result = $this->rateResultFactory->create();
             /** @var Method $method */
@@ -127,6 +126,21 @@ abstract class GHN extends AbstractCarrier implements CarrierInterface
         }
 
         return false;
+    }
+
+    /**
+     * @param RateRequest $request
+     * @return bool
+     */
+    private function isActiveShippingMethod(RateRequest $request): bool
+    {
+        $minimumAmount = $this->getConfigData('minimum_order_amount') ? $this->getConfigData('minimum_order_amount') : 0;
+        $maximumAmount = $this->getConfigData('maximum_order_amount') ? $this->getConfigData('maximum_order_amount') : 0;
+        $amount = $request->getBaseSubtotalWithDiscountInclTax();
+        if ($maximumAmount != 0) {
+            return $minimumAmount <= $amount && $maximumAmount >= $amount;
+        }
+        return true;
     }
 
     /**
