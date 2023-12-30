@@ -4,6 +4,7 @@
 	<policies>
     	<policy id="script-src">
             <values>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="cloudflare-insights" type="host">*.cloudflareinsights.com</value>
                 <value id="twitter.com" type="host">*.twitter.com</value>
@@ -17,6 +18,7 @@
         </policy>
         <policy id="style-src">
             <values>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="googleapis" type="host">*.googleapis.com</value>
                 <value id="twitter.com" type="host">*.twitter.com</value>
@@ -30,6 +32,7 @@
         </policy>
         <policy id="img-src">
             <values>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="klarna-base" type="host">*.klarna.com</value>
                 <value id="googleadservices" type="host">*.googleadservices.com</value>
@@ -46,6 +49,7 @@
         </policy>
         <policy id="connect-src">
             <values>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="twitter.com" type="host">*.twitter.com</value>
                 <value id="paypal" type="host">*.paypal.com</value>
@@ -54,6 +58,7 @@
         </policy>
         <policy id="font-src">
             <values>
+                <value id="googletagmanager" type="host">*.googletagmanager.com</value>
                 <value id="cloudflare" type="host">*.cloudflare.com</value>
                 <value id="twitter.com" type="host">*.twitter.com</value>
                 <value id="gstatic" type="host">*.gstatic.com</value>
