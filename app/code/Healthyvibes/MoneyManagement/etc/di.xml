@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Healthyvibes\MoneyManagement\Api\MoneyManagementRepositoryInterface"
+                type="Healthyvibes\MoneyManagement\Model\MoneyManagementRepository"/>
+    <preference for="Healthyvibes\MoneyManagement\Api\Data\MoneyManagementInterface"
+                type="Healthyvibes\MoneyManagement\Model\MoneyManagement"/>
+    <preference for="Healthyvibes\MoneyManagement\Api\Data\MoneyManagementSearchResultsInterface"
+                type="Healthyvibes\MoneyManagement\Model\MoneyManagementSearchResults"/>
+
+    <virtualType name="Healthyvibes\MoneyManagement\Model\ResourceModel\MoneyManagement\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">healthyvibes_money_management</argument>
+            <argument name="resourceModel" xsi:type="string">Healthyvibes\MoneyManagement\Model\ResourceModel\MoneyManagement</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="money_management_listing_data_source" xsi:type="string">
+                    Healthyvibes\MoneyManagement\Model\ResourceModel\MoneyManagement\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

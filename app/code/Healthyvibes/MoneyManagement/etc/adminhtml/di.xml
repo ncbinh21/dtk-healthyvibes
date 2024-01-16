@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Healthyvibes\MoneyManagement\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">healthyvibes/tmp/moneymanagement</argument>
+            <argument name="basePath" xsi:type="string">healthyvibes/moneymanagement</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Healthyvibes\MoneyManagement\Controller\Adminhtml\MoneyManagement\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Healthyvibes\MoneyManagement\ImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Healthyvibes\MoneyManagement\Controller\Adminhtml\MoneyManagement\Save">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Healthyvibes\MoneyManagement\ImageUpload</argument>
+        </arguments>
+    </type>
+</config>
