@@ -1,0 +1,19 @@
+{
+    "healthyvibes_money_management": {
+        "column": {
+            "entity_id": true,
+            "title": true,
+            "person_name": true,
+            "type": true,
+            "money": true,
+            "used_at": true,
+            "description": true,
+            "image": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

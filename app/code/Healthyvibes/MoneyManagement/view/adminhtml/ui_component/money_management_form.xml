@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">money_management_form.money_management_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">New Item</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Healthyvibes\MoneyManagement\Block\Adminhtml\Button\Save"/>
+            <button name="delete" class="Healthyvibes\MoneyManagement\Block\Adminhtml\Button\Delete"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>money_management_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>money_management_form.money_management_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="money_management_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="healthyvibes/moneymanagement/save"/>
+        </settings>
+        <dataProvider class="Healthyvibes\MoneyManagement\Ui\DataProvider\MoneyManagement\DataProvider"
+                      name="money_management_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label/>
+        </settings>
+        <field name="entity_id" formElement="input">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </field>
+        <field name="title" sortOrder="10" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">Title</label>
+            </settings>
+        </field>
+        <field name="person_name" sortOrder="20" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">Person Name</label>
+            </settings>
+        </field>
+        <field name="type" sortOrder="30" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">Type</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Healthyvibes\MoneyManagement\Model\Money\Type"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="money" sortOrder="40" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">Money</label>
+            </settings>
+        </field>
+        <field name="used_at" formElement="date">
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Used At</label>
+                <visible>true</visible>
+            </settings>
+        </field>
+
+        <field name="description" sortOrder="50" formElement="textarea">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">Description</label>
+            </settings>
+        </field>
+        <field name="image" sortOrder="60" formElement="imageUploader">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Image</label>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="healthyvibes/moneymanagement/upload"/>
+                        </uploaderConfig>
+                        <allowedExtensions>jpg jpeg gif png mp4</allowedExtensions>
+                        <initialMediaGalleryOpenSubpath>healthyvibes/moneymanagement</initialMediaGalleryOpenSubpath>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Healthyvibes_MoneyManagement::money_management" title="Money Management" module="Healthyvibes_MoneyManagement" resource="Healthyvibes_MoneyManagement::money_management" parent="Healthyvibes_Core::healthyvibes_system" sortOrder="10" action="healthyvibes/moneymanagement/index"/>
+    </menu>
+</config>
