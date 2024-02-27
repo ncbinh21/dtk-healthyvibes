@@ -32,7 +32,7 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $amount = (int)$order->getGrandTotal();
         return [
             self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
-            self::TO_NAME => $order->getCustomerName(),
+            self::TO_NAME => $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname(),
             self::TO_PHONE => $order->getShippingAddress()->getTelephone(),
             self::TO_ADDRESS => $order->getShippingAddress()->getStreetLine(1),
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
