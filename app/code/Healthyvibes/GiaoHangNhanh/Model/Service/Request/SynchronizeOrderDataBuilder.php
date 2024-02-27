@@ -32,7 +32,7 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $amount = (int)$order->getGrandTotal();
         $weightCurrent = $order->getWeight() * $weightRate;
         if ($weightCurrent > self::ORIGIN_SETUP_WEIGHT) {
-            $weightCurrent = $weightCurrent = self::DEDUCT_WEIGHT;
+            $weightCurrent = $weightCurrent - self::DEDUCT_WEIGHT;
         }
         return [
             self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',

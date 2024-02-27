@@ -52,7 +52,7 @@ class ShippingDetailsDataBuilder extends AbstractDataBuilder
         $shopData = $this->dataHelper->getSourceFromRegion($regionId);
         $weightCurrent = $rateRequest->getShippingAddress()->getWeight() * $rate;
         if ($weightCurrent > self::ORIGIN_SETUP_WEIGHT) {
-            $weightCurrent = $weightCurrent = self::DEDUCT_WEIGHT;
+            $weightCurrent = $weightCurrent - self::DEDUCT_WEIGHT;
         }
         $data = [
             self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
