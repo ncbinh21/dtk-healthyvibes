@@ -50,11 +50,15 @@ class ShippingDetailsDataBuilder extends AbstractDataBuilder
         $rate = $this->baseConfig->getWeightUnit() == self::DEFAULT_WEIGHT_UNIT ? Config::KGS_G : Config::LBS_G;
         $regionId = isset($address['address']['regionId']) ? $address['address']['regionId'] : $rateRequest->getShippingAddress()->getRegionId();
         $shopData = $this->dataHelper->getSourceFromRegion($regionId);
+        $weightCurrent = $rateRequest->getShippingAddress()->getWeight() * $rate;
+        if ($weightCurrent > self::ORIGIN_SETUP_WEIGHT) {
+            $weightCurrent = $weightCurrent = self::DEDUCT_WEIGHT;
+        }
         $data = [
             self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
             self::TO_DISTRICT_ID => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0,
-            self::WEIGHT => $rateRequest->getShippingAddress()->getWeight() * $rate,
+            self::WEIGHT => $weightCurrent,
             self::SERVICE_TYPE_ID => 2 //2: E-commerce Delivery, 5: Traditional Delivery
         ];
         return $data;
