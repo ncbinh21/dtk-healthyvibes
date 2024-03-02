@@ -30,6 +30,10 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $regionId = $order->getShippingAddress()->getRegionId();
         $shopData = $this->dataHelper->getSourceFromRegion($regionId);
         $amount = (int)$order->getGrandTotal();
+        $weightCurrent = $order->getWeight() * $weightRate;
+        if ($weightCurrent > self::ORIGIN_SETUP_WEIGHT) {
+            $weightCurrent = $weightCurrent - self::DEDUCT_WEIGHT;
+        }
         return [
             self::SHOP_ID => isset($shopData['shop_id_ghn']) ? (string)$shopData['shop_id_ghn'] : '',
             self::TO_NAME => $order->getShippingAddress()->getFirstname() . ' ' . $order->getShippingAddress()->getLastname(),
@@ -37,7 +41,7 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
             self::TO_ADDRESS => $order->getShippingAddress()->getStreetLine(1),
             self::TO_WARD_CODE => isset($wardData['code']) ? (string)$wardData['code'] : '',
             self::TO_DISTRICT_ID => isset($cityData['ghn_code']) ? (int)$cityData['ghn_code'] : 0,
-            self::WEIGHT => $order->getWeight() * $weightRate,
+            self::WEIGHT => $weightCurrent,
             self::SERVICE_TYPE_ID => 2, //2: E-commerce Delivery, 5: Traditional Delivery
             self::PAYMENT_TYPE_ID => (int)$this->config->getValue('payment_type'),
             self::REQUIRED_NOTE => $this->config->getValue('note_code'),

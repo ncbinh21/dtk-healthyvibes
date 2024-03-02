@@ -47,6 +47,8 @@ abstract class AbstractDataBuilder implements BuilderInterface
     const QUANTITY = 'quantity';
     const INSURANCE_VALUE = 'insurance_value';
     const MAX_INSURANCE_VALUE = 990000;
+    const DEDUCT_WEIGHT = 800;
+    const ORIGIN_SETUP_WEIGHT = 2000;
 
     /**
      * @var ConfigInterface
