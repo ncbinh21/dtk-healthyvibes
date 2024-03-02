@@ -56,10 +56,15 @@ class Zend implements ClientInterface
         $result = [];
         /** @var ZendClient $client */
         $client = $this->clientFactory->create();
+        $header = $transferObject->getHeaders();
+        $body = $this->converter->convert($transferObject->getBody());
+        if (isset($body['shop_id'])) {
+            $header['ShopId'] = $body['shop_id'];
+        }
         $client->setConfig($transferObject->getClientConfig());
         $client->setMethod($transferObject->getMethod());
         $client->setRawData($transferObject->getBody());
-        $client->setHeaders($transferObject->getHeaders());
+        $client->setHeaders($header);
         $client->setUrlEncodeBody($transferObject->shouldEncode());
         $client->setUri($transferObject->getUri());
 
