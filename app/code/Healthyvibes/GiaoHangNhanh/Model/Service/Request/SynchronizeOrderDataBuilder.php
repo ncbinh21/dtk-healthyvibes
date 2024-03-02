@@ -28,7 +28,11 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $cityData = $this->city->loadById($order->getShippingAddress()->getCityId());
         $wardData = $this->ward->loadById($order->getShippingAddress()->getWardId());
         $regionId = $order->getShippingAddress()->getRegionId();
-        $shopData = $this->dataHelper->getSourceFromRegion($regionId);
+        if (!isset($buildSubject['source_code'])) {
+            $shopData = $this->dataHelper->getSourceFromSourceCode($buildSubject['source_code']);
+        } else {
+            $shopData = $this->dataHelper->getSourceFromRegion($regionId);
+        }
         $amount = (int)$order->getGrandTotal();
         $weightCurrent = $order->getWeight() * $weightRate;
         if ($weightCurrent > self::ORIGIN_SETUP_WEIGHT) {
