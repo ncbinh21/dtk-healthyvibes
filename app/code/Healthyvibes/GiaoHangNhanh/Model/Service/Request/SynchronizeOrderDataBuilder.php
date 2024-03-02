@@ -28,7 +28,7 @@ class SynchronizeOrderDataBuilder extends AbstractDataBuilder
         $cityData = $this->city->loadById($order->getShippingAddress()->getCityId());
         $wardData = $this->ward->loadById($order->getShippingAddress()->getWardId());
         $regionId = $order->getShippingAddress()->getRegionId();
-        if (!isset($buildSubject['source_code'])) {
+        if (isset($buildSubject['source_code'])) {
             $shopData = $this->dataHelper->getSourceFromSourceCode($buildSubject['source_code']);
         } else {
             $shopData = $this->dataHelper->getSourceFromRegion($regionId);
