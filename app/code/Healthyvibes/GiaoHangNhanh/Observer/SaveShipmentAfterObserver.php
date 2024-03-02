@@ -64,7 +64,9 @@ class SaveShipmentAfterObserver implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
+        /** @var \Magento\Sales\Model\Order\Shipment $shipment */
         $shipment = $observer->getEvent()->getShipment();
+        $sourceCode = $shipment->getExtensionAttributes()->getSourceCode();
         /** @var \Magento\Sales\Model\Order $order */
         $order = $shipment->getOrder();
         if ($this->request->getParam('send_to_ghn')) {
@@ -72,7 +74,8 @@ class SaveShipmentAfterObserver implements ObserverInterface
                 try {
                     $result = $this->commandPool->get('synchronize_order')->execute([
                         'order' => $order,
-                        'service_id' => $order->getShippingAddress()->getShippingServiceId()
+                        'service_id' => $order->getShippingAddress()->getShippingServiceId(),
+                        'source_code' => $sourceCode
                     ]);
                     if ($result && $data = $result->get()) {
                         if (isset($data['create_order'][AbstractDataBuilder::ORDER_CODE])) {
