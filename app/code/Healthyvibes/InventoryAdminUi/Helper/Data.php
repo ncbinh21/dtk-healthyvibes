@@ -25,6 +25,7 @@ class Data
 
     /**
      * @param $regionId
+     * @return array|mixed
      */
     public function getSourceFromRegion($regionId)
     {
@@ -42,5 +43,18 @@ class Data
             $sourceSelect = $this->resourceConnection->getConnection()->fetchRow($select);
         }
         return $sourceSelect;
+    }
+
+    /**
+     * @param $sourceCode
+     * @return mixed
+     */
+    public function getSourceFromSourceCode($sourceCode)
+    {
+        $select = $this->resourceConnection->getConnection()->select()
+            ->from('inventory_source')
+            ->where('source_code = ?', $sourceCode)
+            ->limit(1);
+        return $this->resourceConnection->getConnection()->fetchRow($select);
     }
 }
